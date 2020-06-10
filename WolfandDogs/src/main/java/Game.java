@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.imageio.ImageIO;
 
-public class Figures<dogsAreSet> implements ActionListener {
+public class Game implements ActionListener {
 
     final int tableSize = 8;
     private final JPanel window = new JPanel(new BorderLayout(20, 2));
@@ -47,7 +47,7 @@ public class Figures<dogsAreSet> implements ActionListener {
     // For deciding weather game is started, are dogs set ?
     private static boolean isDogsSet;
 
-    private static boolean  isOver = false;
+    private static boolean isGameOver = false;
 
     private static boolean isWolfSet = false;
     private static boolean isWolfSelected = false;
@@ -60,8 +60,15 @@ public class Figures<dogsAreSet> implements ActionListener {
 
 
     private static final String columns = "ABCDEFGH";
-    private static boolean player1DogToMove = false;
-    private static boolean player2WolfToMove = false;
+    private static boolean isPlayer1DogToMove = false;
+    private static boolean isPlayer2WolfToMove = false;
+
+    Game() {
+        isDogsSet = false;
+        isGameStarted = false;
+        isReadyToStart = false;
+        Gui();
+    }
 
     private static void  highlightPossibleMoves(ArrayList<Integer> possibleMoves){
         for (int counter = 0; counter < possibleMoves.size(); counter++) {
@@ -84,12 +91,12 @@ public class Figures<dogsAreSet> implements ActionListener {
                     for (Map.Entry<Integer, JButton> entry : dogs.entrySet()) {
                         Integer dogKey = entry.getKey();
                         JButton value = entry.getValue();
-                        if (value.equals(button) && isWolfSet && player1DogToMove){
+                        if (value.equals(button) && isWolfSet && isPlayer1DogToMove){
                             isDogSelected = true;
                             selectedDogIndex = dogKey;
                             button.setBackground(Color.GREEN);
                             possibleMoves = getPossibleMovesOfIndexForDog(dogKey);
-                            highlightBlacks(true);
+                            putYellowsBackToBlack(true);
                             highlightPossibleMoves(possibleMoves);
                         }
                         else {
@@ -99,62 +106,51 @@ public class Figures<dogsAreSet> implements ActionListener {
                 }
             });
         } catch (Exception ex) {
-            System.out.println(ex);
+            ex.printStackTrace();
         }
         return button;
     }
 
-    private ArrayList<Integer> getPossibleMovesOfIndexForDog(Integer dogKey) {
+    private ArrayList<Integer> getPossibleMovesOfIndexForDog(Integer dogIndex) {
         ArrayList<Integer> poss = new ArrayList<>();
-        int left = tableSize + 1;
-        int right = tableSize -1;
+        int left = tableSize - 1;
+        int right = tableSize + 1;
 
-        int first = dogKey - right;
-        if (first > 0 && first < 63 && blackList.contains(first))
-        poss.add(first);
+        int firstPossibleMove = dogIndex - right;
+        if (firstPossibleMove > 0 && firstPossibleMove < 63 && blackList.contains(firstPossibleMove))
+        poss.add(firstPossibleMove);
 
-        int second = dogKey - left;
-        if (second > 0 && second < 63 && blackList.contains(second))
-        poss.add(second);
-
-        // THEY ONLY CAN GO FORWARD
-        int third = dogKey + right;
-        if (third > 0 && third < 63 && blackList.contains(third)){}
-      //  poss.add(third);
-
-        // THEY ONLY CAN GO FORWARD
-        int fourth = dogKey + left;
-        if (fourth > 0 && fourth < 63 && blackList.contains(fourth)){}
-     //   poss.add(fourth);
+        int secondPossibleMove = dogIndex - left;
+        if (secondPossibleMove > 0 && secondPossibleMove < 63 && blackList.contains(secondPossibleMove))
+        poss.add(secondPossibleMove);
 
         return poss;
     }
 
-    private ArrayList<Integer> getPossibleMovesOfIndexForWolf(Integer dogKey) {
+    private ArrayList<Integer> getPossibleMovesOfIndexForWolf(Integer wolfIndex) {
         ArrayList<Integer> poss = new ArrayList<>();
 
-        int first = dogKey - 7;
-        if (first > 0 && first < 63 && blackList.contains(first) && !dogs.containsKey(first))
-            poss.add(first);
+        int firstPossibleMove = wolfIndex - 7;
+        if (firstPossibleMove > 0 && firstPossibleMove < 63 && blackList.contains(firstPossibleMove) && !dogs.containsKey(firstPossibleMove))
+            poss.add(firstPossibleMove);
 
-        int second = dogKey -9;
-        if (second > 0 && second < 63 && blackList.contains(second) && !dogs.containsKey(second))
-            poss.add(second);
+        int secondPossibleMove = wolfIndex -9;
+        if (secondPossibleMove > 0 && secondPossibleMove < 63 && blackList.contains(secondPossibleMove) && !dogs.containsKey(secondPossibleMove))
+            poss.add(secondPossibleMove);
 
-        int third = dogKey + 7;
-        if (third > 0 && third < 63 && blackList.contains(third) && !dogs.containsKey(third))
-            poss.add(third);
+        int thirdPossibleMove = wolfIndex + 7;
+        if (thirdPossibleMove > 0 && thirdPossibleMove < 63 && blackList.contains(thirdPossibleMove) && !dogs.containsKey(thirdPossibleMove))
+            poss.add(thirdPossibleMove);
 
-        int fourth = dogKey + 9;
-        if (fourth > 0 && fourth < 63 && blackList.contains(fourth) && !dogs.containsKey(fourth))
-            poss.add(fourth);
+        int fourthPossibleMove = wolfIndex + 9;
+        if (fourthPossibleMove > 0 && fourthPossibleMove < 63 && blackList.contains(fourthPossibleMove) && !dogs.containsKey(fourthPossibleMove))
+            poss.add(fourthPossibleMove);
 
         return poss;
     }
 
     JButton getWolfButton() {
         JButton button = new JButton();
-
 
         try {
             Image img = ImageIO.read(new FileInputStream("./src/main/resources/wolf.jpg"));
@@ -170,16 +166,9 @@ public class Figures<dogsAreSet> implements ActionListener {
                 }
             });
         } catch (Exception ex) {
-            System.out.println(ex);
+            ex.printStackTrace();
         }
         return button;
-    }
-
-    Figures() {
-        isDogsSet = false;
-        isGameStarted = false;
-        isReadyToStart = false;
-        Gui();
     }
 
     public JButton createBlackButton(final int i, final int j){
@@ -195,42 +184,41 @@ public class Figures<dogsAreSet> implements ActionListener {
         button.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e) {
-                if (!isOver) {
+                if (!isGameOver) {
                 int index = getIndexFromCoord(i, j);
                 updateReadyToStart();
                 // Wolf to be set
                 if (!isWolfSet && isDogsSet && blackFields.containsKey(index)) {
                     setWolf(index);
-                    player1DogToMove = true;
-                    player2WolfToMove = false;
+                    isPlayer1DogToMove = true;
+                    isPlayer2WolfToMove = false;
                     selectedWolfIndex = index;
-                    //updateReadyToStart();
                     highlightDogs(true);
                 }
                 // Dog move to be done
 
-                if (isReadyToStart && !isOver) {
-                    if (possibleMoves.contains(index) && isDogSelected && isWolfSet && player1DogToMove && !player2WolfToMove) {
+                if (isReadyToStart && !isGameOver) {
+                    if (possibleMoves.contains(index) && isDogSelected && isWolfSet && isPlayer1DogToMove && !isPlayer2WolfToMove) {
                         makeADogmove(selectedDogIndex, index);
 
                         if (!wolfCanMove()) {
                             System.out.println("Wolf lost");
-                            isOver = true;
+                            isGameOver = true;
                             wolf.setBackground(Color.RED);
                         } else if (
                                 (selectedWolfIndex == 56 ||
                                         selectedWolfIndex == 58 ||
                                         selectedWolfIndex == 60 ||
-                                        selectedWolfIndex == 56) && player2WolfToMove) {
+                                        selectedWolfIndex == 56) && isPlayer2WolfToMove) {
                             lastMessage = "Player 2 ( WOLF ) WON.";
                             highlightDogsToRed();
                             System.out.println("Farkas nyert");
-                            isOver = true;
+                            isGameOver = true;
                         }
                         lastMessage = "Player 2 ( WOLF ) is next to move.";
                         displayInfo("Player 1 ( Dog ) moved from " + selectedDogIndex + " to " + index);
                         possibleMoves = getPossibleMovesOfIndexForWolf(selectedWolfIndex);
-                    } else if (possibleMoves.contains(index) && isWolfSelected && player2WolfToMove) {
+                    } else if (possibleMoves.contains(index) && isWolfSelected && isPlayer2WolfToMove) {
                         if (wolfCanMove()) {
                             makeAWolfmove(index);
                             lastMessage = "Player 1 ( DOG ) is next to move. Select a dog and move.";
@@ -240,7 +228,7 @@ public class Figures<dogsAreSet> implements ActionListener {
                         displayInfo("Player 2 ( Wolf ) moved from " + selectedWolfIndex + " to " + index);
                     }
                     if (!isWolfSelected) {
-                        highlightBlacks(true);
+                        putYellowsBackToBlack(true);
                         highlightDogs(true);
                     }
                 }
@@ -272,19 +260,25 @@ public class Figures<dogsAreSet> implements ActionListener {
             }
         }
         System.out.println(possibleMoves.toString());
-        return player2WolfToMove && !possibleMoves.isEmpty();
+        return isPlayer2WolfToMove && !possibleMoves.isEmpty();
     }
 
     private void makeAWolfmove(int index) {
+
+        if(index == 56 || index == 58 || index == 60 || index == 62 ) {
+            isGameOver = true;
+            highlightDogsToRed();
+        }
+
         putBackToBlack(index);
         putField(wolf, index);
-        highlightBlacks(true);
-        player2WolfToMove = false;
+        putYellowsBackToBlack(true);
+        isPlayer2WolfToMove = false;
         highlightField(wolf, false);
         selectedWolfIndex = index;
         highlightDogs(true);
         isWolfSelected = false;
-        player1DogToMove = true;
+        isPlayer1DogToMove = true;
     }
 
     public JButton createWhiteButton(int i, int j){
@@ -332,28 +326,8 @@ public class Figures<dogsAreSet> implements ActionListener {
             }
 
         }
+        this.setDogs();
         System.out.println("GUI STOOD UP");
-        System.out.println("BLACK INDEXES : " + blackIndexesToString());
-    }
-
-    private String blackIndexesToString() {
-        StringBuilder sb = new StringBuilder();
-        for (Map.Entry<Integer, JButton> entry : blackFields.entrySet()) {
-            Integer key = entry.getKey();
-            JButton value = entry.getValue();
-            sb.append(" " + key + " , " );
-        }
-        return sb.toString();
-    }
-
-    public String dogIndexesToString() {
-        StringBuilder sb = new StringBuilder();
-        for (Map.Entry<Integer, JButton> entry : dogs.entrySet()) {
-            Integer key = entry.getKey();
-            JButton value = entry.getValue();
-            sb.append(" " + key + " , " );
-        }
-        return sb.toString();
     }
 
     private boolean isWhiteButton(int i, int j) {
@@ -379,8 +353,8 @@ public class Figures<dogsAreSet> implements ActionListener {
         JButton dog = dogs.get(selectedDogInd);
         putBackToBlack(index);
         putField(dog, index);
-        highlightBlacks(true);
-        player2WolfToMove = true;
+        putYellowsBackToBlack(true);
+        isPlayer2WolfToMove = true;
 
         highlightField(dog, false);
         highlightField(wolf, true);
@@ -391,14 +365,9 @@ public class Figures<dogsAreSet> implements ActionListener {
         isWolfSelected = true;
         isDogSelected = false;
         dogs.put(index, dog);
-        player1DogToMove = false;
-        player2WolfToMove = true;
+        isPlayer1DogToMove = false;
+        isPlayer2WolfToMove = true;
 
-
-    }
-
-    private void printStatus(int index){
-        System.out.println("index : " + index);
 
     }
 
@@ -427,7 +396,7 @@ public class Figures<dogsAreSet> implements ActionListener {
         }
     }
 
-    private static void highlightBlacks(boolean b) {
+    private static void putYellowsBackToBlack(boolean b) {
         if (b) {
             for (int i = 0; i < blackFields.size(); i++) {
                 for (Map.Entry<Integer, JButton> entry : blackFields.entrySet()) {
@@ -489,8 +458,8 @@ public class Figures<dogsAreSet> implements ActionListener {
         sb.append("\ndogsAreSet = " + isDogsSet);
         sb.append("\nwolfIsSet = " + isWolfSet);
         sb.append("\nisReadyToStart = " + isReadyToStart);
-        sb.append("\nplayer1DogToMove  = " + player1DogToMove);
-        sb.append("\nplayer2WolfToMove  = " + player2WolfToMove);
+        sb.append("\nplayer1DogToMove  = " + isPlayer1DogToMove);
+        sb.append("\nplayer2WolfToMove  = " + isPlayer2WolfToMove);
         sb.append("\nisDogSelected  = " + isDogSelected);
         sb.append("\nselectedDogIndex  = " + selectedDogIndex);
         sb.append("\nisWolfSelected  = " + isWolfSelected);

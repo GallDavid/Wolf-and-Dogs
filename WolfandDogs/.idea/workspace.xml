@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="58a6c6e6-12a8-45cc-9fee-aae4b4937da6" name="Default Changelist" comment="" />
+    <list default="true" id="58a6c6e6-12a8-45cc-9fee-aae4b4937da6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,12 +20,17 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1coR65c8YejvRbI6NHvfVBNdFgD" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -38,8 +45,8 @@
       <recent name="C:\Users\abasc\Documents\_MELO\demoapp\wolves\src\main\java" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BorderL">
-    <configuration name="BorderL" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="BorderL" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="BorderL" />
       <module name="wolves" />
       <method v="2">
@@ -53,9 +60,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="WolfandDogs" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.BorderL" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Figures" />
       </list>
     </recent_temporary>
@@ -74,6 +88,14 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="2272" y="63" width="726" height="771" key="#BorderL" timestamp="1591792008783">
+      <screen x="1920" y="0" width="1440" height="900" />
+    </state>
+    <state x="2272" y="63" width="726" height="771" key="#BorderL/67.27.1853.1053/1920.0.1440.900@1920.0.1440.900" timestamp="1591792008783" />
+    <state x="2123" y="26" width="1024" height="845" key="#Project_Structure" timestamp="1591790602223">
+      <screen x="1920" y="0" width="1440" height="900" />
+    </state>
+    <state x="2123" y="26" width="1024" height="845" key="#Project_Structure/67.27.1853.1053/1920.0.1440.900@1920.0.1440.900" timestamp="1591790602223" />
     <state x="990" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1591219820646">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -82,26 +104,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1070" y="409" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591217779197" />
-    <state width="1394" height="227" key="GridCell.Tab.0.bottom" timestamp="1591787979925">
+    <state width="1394" height="227" key="GridCell.Tab.0.bottom" timestamp="1591792109486">
       <screen x="1920" y="0" width="1440" height="900" />
     </state>
     <state width="1877" height="279" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591220831233" />
-    <state width="1394" height="227" key="GridCell.Tab.0.bottom/67.27.1853.1053/1920.0.1440.900@1920.0.1440.900" timestamp="1591787979925" />
-    <state width="1394" height="227" key="GridCell.Tab.0.center" timestamp="1591787979924">
+    <state width="1394" height="227" key="GridCell.Tab.0.bottom/67.27.1853.1053/1920.0.1440.900@1920.0.1440.900" timestamp="1591792109486" />
+    <state width="1394" height="227" key="GridCell.Tab.0.center" timestamp="1591792109486">
       <screen x="1920" y="0" width="1440" height="900" />
     </state>
     <state width="1877" height="279" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591220831233" />
-    <state width="1394" height="227" key="GridCell.Tab.0.center/67.27.1853.1053/1920.0.1440.900@1920.0.1440.900" timestamp="1591787979924" />
-    <state width="1394" height="227" key="GridCell.Tab.0.left" timestamp="1591787979924">
+    <state width="1394" height="227" key="GridCell.Tab.0.center/67.27.1853.1053/1920.0.1440.900@1920.0.1440.900" timestamp="1591792109486" />
+    <state width="1394" height="227" key="GridCell.Tab.0.left" timestamp="1591792109486">
       <screen x="1920" y="0" width="1440" height="900" />
     </state>
     <state width="1877" height="279" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591220831233" />
-    <state width="1394" height="227" key="GridCell.Tab.0.left/67.27.1853.1053/1920.0.1440.900@1920.0.1440.900" timestamp="1591787979924" />
-    <state width="1394" height="227" key="GridCell.Tab.0.right" timestamp="1591787979925">
+    <state width="1394" height="227" key="GridCell.Tab.0.left/67.27.1853.1053/1920.0.1440.900@1920.0.1440.900" timestamp="1591792109486" />
+    <state width="1394" height="227" key="GridCell.Tab.0.right" timestamp="1591792109486">
       <screen x="1920" y="0" width="1440" height="900" />
     </state>
     <state width="1877" height="279" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591220831233" />
-    <state width="1394" height="227" key="GridCell.Tab.0.right/67.27.1853.1053/1920.0.1440.900@1920.0.1440.900" timestamp="1591787979925" />
+    <state width="1394" height="227" key="GridCell.Tab.0.right/67.27.1853.1053/1920.0.1440.900@1920.0.1440.900" timestamp="1591792109486" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
