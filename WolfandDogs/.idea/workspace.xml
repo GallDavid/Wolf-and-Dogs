@@ -3,6 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="58a6c6e6-12a8-45cc-9fee-aae4b4937da6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GameContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Game$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Game$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Game$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Game$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/GameContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GameContainer.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +42,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../HomeProjekt/WolfandDogs" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -92,10 +101,10 @@
       <screen x="1920" y="0" width="1440" height="900" />
     </state>
     <state x="2272" y="63" width="726" height="771" key="#BorderL/67.27.1853.1053/1920.0.1440.900@1920.0.1440.900" timestamp="1591792008783" />
-    <state x="2123" y="26" width="1024" height="845" key="#Project_Structure" timestamp="1591790602223">
+    <state x="2123" y="26" width="1024" height="845" key="#Project_Structure" timestamp="1591859228163">
       <screen x="1920" y="0" width="1440" height="900" />
     </state>
-    <state x="2123" y="26" width="1024" height="845" key="#Project_Structure/67.27.1853.1053/1920.0.1440.900@1920.0.1440.900" timestamp="1591790602223" />
+    <state x="2123" y="26" width="1024" height="845" key="#Project_Structure/67.27.1853.1053/1920.0.1440.900@1920.0.1440.900" timestamp="1591859228163" />
     <state x="990" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1591219820646">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -104,36 +113,29 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1070" y="409" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591217779197" />
-    <state width="1394" height="227" key="GridCell.Tab.0.bottom" timestamp="1591792109486">
+    <state x="2423" y="207" width="424" height="484" key="FileChooserDialogImpl" timestamp="1591861583708">
+      <screen x="1920" y="0" width="1440" height="900" />
+    </state>
+    <state x="2423" y="207" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053/1920.0.1440.900@1920.0.1440.900" timestamp="1591861583708" />
+    <state width="1394" height="227" key="GridCell.Tab.0.bottom" timestamp="1591861745569">
       <screen x="1920" y="0" width="1440" height="900" />
     </state>
     <state width="1877" height="279" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591220831233" />
-    <state width="1394" height="227" key="GridCell.Tab.0.bottom/67.27.1853.1053/1920.0.1440.900@1920.0.1440.900" timestamp="1591792109486" />
-    <state width="1394" height="227" key="GridCell.Tab.0.center" timestamp="1591792109486">
+    <state width="1394" height="227" key="GridCell.Tab.0.bottom/67.27.1853.1053/1920.0.1440.900@1920.0.1440.900" timestamp="1591861745569" />
+    <state width="1394" height="227" key="GridCell.Tab.0.center" timestamp="1591861745568">
       <screen x="1920" y="0" width="1440" height="900" />
     </state>
     <state width="1877" height="279" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591220831233" />
-    <state width="1394" height="227" key="GridCell.Tab.0.center/67.27.1853.1053/1920.0.1440.900@1920.0.1440.900" timestamp="1591792109486" />
-    <state width="1394" height="227" key="GridCell.Tab.0.left" timestamp="1591792109486">
+    <state width="1394" height="227" key="GridCell.Tab.0.center/67.27.1853.1053/1920.0.1440.900@1920.0.1440.900" timestamp="1591861745568" />
+    <state width="1394" height="227" key="GridCell.Tab.0.left" timestamp="1591861745568">
       <screen x="1920" y="0" width="1440" height="900" />
     </state>
     <state width="1877" height="279" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591220831233" />
-    <state width="1394" height="227" key="GridCell.Tab.0.left/67.27.1853.1053/1920.0.1440.900@1920.0.1440.900" timestamp="1591792109486" />
-    <state width="1394" height="227" key="GridCell.Tab.0.right" timestamp="1591792109486">
+    <state width="1394" height="227" key="GridCell.Tab.0.left/67.27.1853.1053/1920.0.1440.900@1920.0.1440.900" timestamp="1591861745568" />
+    <state width="1394" height="227" key="GridCell.Tab.0.right" timestamp="1591861745568">
       <screen x="1920" y="0" width="1440" height="900" />
     </state>
     <state width="1877" height="279" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591220831233" />
-    <state width="1394" height="227" key="GridCell.Tab.0.right/67.27.1853.1053/1920.0.1440.900@1920.0.1440.900" timestamp="1591792109486" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Figures.java</url>
-          <line>349</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state width="1394" height="227" key="GridCell.Tab.0.right/67.27.1853.1053/1920.0.1440.900@1920.0.1440.900" timestamp="1591861745568" />
   </component>
 </project>

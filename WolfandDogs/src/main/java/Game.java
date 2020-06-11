@@ -62,6 +62,7 @@ public class Game implements ActionListener {
     private static final String columns = "ABCDEFGH";
     private static boolean isPlayer1DogToMove = false;
     private static boolean isPlayer2WolfToMove = false;
+    private static  boolean isGameContainerStarted = false;
 
     Game() {
         isDogsSet = false;
@@ -70,7 +71,7 @@ public class Game implements ActionListener {
         Gui();
     }
 
-    private static void  highlightPossibleMoves(ArrayList<Integer> possibleMoves){
+    private static void highlightPossibleMoves(ArrayList<Integer> possibleMoves){
         for (int counter = 0; counter < possibleMoves.size(); counter++) {
             int buttonIndex = possibleMoves.get(counter);
             JButton button = blackFields.get(buttonIndex);
@@ -85,25 +86,29 @@ public class Game implements ActionListener {
             button.setIcon(new ImageIcon(img));
             button.addActionListener(new ActionListener()
             {
-                public void actionPerformed(ActionEvent e)
-                {
-                    highlightDogs(false);
-                    for (Map.Entry<Integer, JButton> entry : dogs.entrySet()) {
-                        Integer dogKey = entry.getKey();
-                        JButton value = entry.getValue();
-                        if (value.equals(button) && isWolfSet && isPlayer1DogToMove){
-                            isDogSelected = true;
-                            selectedDogIndex = dogKey;
-                            button.setBackground(Color.GREEN);
-                            possibleMoves = getPossibleMovesOfIndexForDog(dogKey);
-                            putYellowsBackToBlack(true);
-                            highlightPossibleMoves(possibleMoves);
+                public void actionPerformed(ActionEvent e) {
+                    if (!isGameOver) {
+
+                        highlightDogs(false);
+                        for (Map.Entry<Integer, JButton> entry : dogs.entrySet()) {
+                            Integer dogKey = entry.getKey();
+                            JButton value = entry.getValue();
+                            if (value.equals(button) && isWolfSet && isPlayer1DogToMove) {
+                                isDogSelected = true;
+                                selectedDogIndex = dogKey;
+                                button.setBackground(Color.GREEN);
+                                possibleMoves = getPossibleMovesOfIndexForDog(dogKey);
+                                putYellowsBackToBlack(true);
+                                highlightPossibleMoves(possibleMoves);
+                            } else {
+                                System.out.println("PLAYER 2 ( WOLF ) is next. PLease chose a black field to place wolf.");
+                            }
                         }
-                        else {
-                            System.out.println("PLAYER 2 ( WOLF ) is next. PLease chose a black field to place wolf.");
-                        }
+                    } else {
+                        highlightDogsToRed();
                     }
                 }
+
             });
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -118,11 +123,11 @@ public class Game implements ActionListener {
 
         int firstPossibleMove = dogIndex - right;
         if (firstPossibleMove > 0 && firstPossibleMove < 63 && blackList.contains(firstPossibleMove))
-        poss.add(firstPossibleMove);
+            poss.add(firstPossibleMove);
 
         int secondPossibleMove = dogIndex - left;
         if (secondPossibleMove > 0 && secondPossibleMove < 63 && blackList.contains(secondPossibleMove))
-        poss.add(secondPossibleMove);
+            poss.add(secondPossibleMove);
 
         return poss;
     }
@@ -184,61 +189,77 @@ public class Game implements ActionListener {
         button.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e) {
-                if (!isGameOver) {
-                int index = getIndexFromCoord(i, j);
-                updateReadyToStart();
-                // Wolf to be set
-                if (!isWolfSet && isDogsSet && blackFields.containsKey(index)) {
-                    setWolf(index);
-                    isPlayer1DogToMove = true;
-                    isPlayer2WolfToMove = false;
-                    selectedWolfIndex = index;
-                    highlightDogs(true);
-                }
-                // Dog move to be done
-
-                if (isReadyToStart && !isGameOver) {
-                    if (possibleMoves.contains(index) && isDogSelected && isWolfSet && isPlayer1DogToMove && !isPlayer2WolfToMove) {
-                        makeADogmove(selectedDogIndex, index);
-
-                        if (!wolfCanMove()) {
-                            System.out.println("Wolf lost");
-                            isGameOver = true;
-                            wolf.setBackground(Color.RED);
-                        } else if (
-                                (selectedWolfIndex == 56 ||
-                                        selectedWolfIndex == 58 ||
-                                        selectedWolfIndex == 60 ||
-                                        selectedWolfIndex == 56) && isPlayer2WolfToMove) {
-                            lastMessage = "Player 2 ( WOLF ) WON.";
-                            highlightDogsToRed();
-                            System.out.println("Farkas nyert");
-                            isGameOver = true;
+                if (isGameContainerStarted) {
+                    if (!isGameOver) {
+                        int index = getIndexFromCoord(i, j);
+                        updateReadyToStart();
+                        // Wolf to be set
+                        if (!isWolfSet && isDogsSet && blackFields.containsKey(index)) {
+                            setWolf(index);
+                            isPlayer1DogToMove = true;
+                            isPlayer2WolfToMove = false;
+                            selectedWolfIndex = index;
+                            highlightDogs(true);
                         }
-                        lastMessage = "Player 2 ( WOLF ) is next to move.";
-                        displayInfo("Player 1 ( Dog ) moved from " + selectedDogIndex + " to " + index);
-                        possibleMoves = getPossibleMovesOfIndexForWolf(selectedWolfIndex);
-                    } else if (possibleMoves.contains(index) && isWolfSelected && isPlayer2WolfToMove) {
-                        if (wolfCanMove()) {
-                            makeAWolfmove(index);
-                            lastMessage = "Player 1 ( DOG ) is next to move. Select a dog and move.";
-                        } else {
-                            lastMessage = "Player 1 ( DOG ) is next to move. Select a dog and move.";
+                        // Dog move to be done
+
+                        if (isReadyToStart && !isGameOver) {
+                            if (possibleMoves.contains(index) && isDogSelected && isWolfSet && isPlayer1DogToMove && !isPlayer2WolfToMove) {
+                                makeADogmove(selectedDogIndex, index);
+
+                                if (!wolfCanMove()) {
+                                    System.out.println("Wolf lost");
+                                    isGameOver = true;
+                                    wolf.setBackground(Color.RED);
+                                } else if (
+                                        (selectedWolfIndex == 56 ||
+                                                selectedWolfIndex == 58 ||
+                                                selectedWolfIndex == 60 ||
+                                                selectedWolfIndex == 56) && isPlayer2WolfToMove) {
+                                    lastMessage = "Player 2 ( WOLF ) WON.";
+                                    highlightDogsToRed();
+                                    System.out.println("Farkas nyert");
+                                    isGameOver = true;
+                                }
+                                lastMessage = "Player 2 ( WOLF ) is next to move.";
+                                displayInfo("Player 1 ( Dog ) moved from " + selectedDogIndex + " to " + index);
+                                possibleMoves = getPossibleMovesOfIndexForWolf(selectedWolfIndex);
+                            } else if (possibleMoves.contains(index) && isWolfSelected && isPlayer2WolfToMove) {
+                                if (wolfCanMove()) {
+                                    makeAWolfmove(index);
+                                    if (wolfIsOnLAstRow()){
+                                        System.out.println("should be here");
+                                        highlightDogsToRed();
+                                        isGameOver = true;
+                                        System.out.println();
+                                    }
+                                    lastMessage = "Player 1 ( DOG ) is next to move. Select a dog and move.";
+                                } else {
+
+                                    lastMessage = "Player 1 ( DOG ) is next to move. Select a dog and move.";
+                                }
+                                displayInfo("Player 2 ( Wolf ) moved from " + selectedWolfIndex + " to " + index);
+                            }
+                            if (!isWolfSelected) {
+                                putYellowsBackToBlack(true);
+                                highlightDogs(true);
+                            }
                         }
-                        displayInfo("Player 2 ( Wolf ) moved from " + selectedWolfIndex + " to " + index);
-                    }
-                    if (!isWolfSelected) {
-                        putYellowsBackToBlack(true);
-                        highlightDogs(true);
+                    } else {
+                        highlightDogsToRed();
                     }
                 }
-            }else {
-                    highlightDogsToRed();
-                }
-                }
-        });
+            }});
 
         return button;
+    }
+
+    private boolean wolfIsOnLAstRow() {
+        return selectedWolfIndex == 56 ||
+                selectedWolfIndex == 58 ||
+                selectedWolfIndex == 60 ||
+                selectedWolfIndex == 62;
+
     }
 
     private void highlightDogsToRed() {
@@ -469,5 +490,9 @@ public class Game implements ActionListener {
         sb.append("\n END OF : " + i);
         sb.append("\n====================================");
         System.out.println(sb.toString());
+    }
+
+    public void setStarted(boolean started) {
+        isGameContainerStarted = started;
     }
 }

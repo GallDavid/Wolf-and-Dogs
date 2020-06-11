@@ -12,15 +12,24 @@ public class GameContainer implements ActionListener {
     public static final String setWolfText = "Set the Wolf, Player 2 ! Pick any free black field.";
 
     public static Game game;
+    public static JFrame frame;
+
+    public static JPanel buttonPanel = new JPanel();
 
     public GameContainer() {
 
         startButton = new JButton(startText);
+
+
+
         startButton.setName("startButton");
         startButton.addActionListener(this);
         restartButton = new JButton(restartText);
         restartButton.setName("restartButton");
+        restartButton.setEnabled(false);
         restartButton.addActionListener(this);
+        buttonPanel.add(startButton);
+        buttonPanel.add(restartButton);
     }
 
     private boolean gameHasStarted = false;
@@ -30,6 +39,7 @@ public class GameContainer implements ActionListener {
     public static JButton startButton;
     public static JButton restartButton;
     public static JTextArea infoArea;
+
 
 
     public static void addComponentsToPane(Container pane) {
@@ -46,7 +56,8 @@ public class GameContainer implements ActionListener {
 
         game = new Game(); //everything in the table
 
-        pane.add(startButton, BorderLayout.PAGE_START);
+        //pane.add(startButton, BorderLayout.PAGE_START);
+        pane.add(buttonPanel, BorderLayout.PAGE_START);
 
         //Make the center component big, since that's the
         //typical usage of BorderLayout.
@@ -66,7 +77,7 @@ public class GameContainer implements ActionListener {
     static void createAndShowGUI() {
 
         //Create and set up the window.
-        JFrame frame = new JFrame("Dogs and Wolf");
+        frame = new JFrame("Dogs and Wolf");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1000, 1000);
         //Set up the content pane.
@@ -86,18 +97,35 @@ public class GameContainer implements ActionListener {
         if (((JButton) e.getSource()).getText().equals(startText)) {
             startGame();
         }
+        if (((JButton)e.getSource()).getText().equals(restartText) ) {
+            restartGame();
+        }
     }
 
     private void restartGame() {
         this.gameHasStarted = false;
-        this.restartButton.setText(restartText);
+        restartButton.setText(restartText);
+        Container cont = frame.getContentPane();
+        BorderLayout layout = (BorderLayout)cont.getLayout();
+        cont.remove(layout.getLayoutComponent(BorderLayout.CENTER));
+        game = new Game();
+        cont.add(game.getGui(), BorderLayout.CENTER);
+        this.gameHasStarted = false;
+        game.setStarted(this.gameHasStarted);
 
-        this.game.setDogs();
+        startButton.setText(startText);
+        startButton.setEnabled(true);
+        restartButton.setEnabled(false);
+        frame.revalidate();
+        frame.repaint();
 
     }
 
     private void startGame() {
         this.gameHasStarted = true;
-        this.startButton.setText("Started");
+        game.setStarted(true);
+        startButton.setText("Started");
+        startButton.setEnabled(false);
+        restartButton.setEnabled(true);
     }
 }
