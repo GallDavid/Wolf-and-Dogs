@@ -21,44 +21,29 @@ public class Game implements ActionListener {
     private JButton dog2 = getDogButton();
     private JButton dog3 = getDogButton();
     private JButton dog4 = getDogButton();
-
     private static int lastDogRow;
-
     private static String lastMessage = "";
-
     // to store all the black fields, key is the index, where they lay
     private static  Map<Integer, JButton> blackFields = new HashMap<>();
-
     // list of indexes where blacks lay
     private static ArrayList<Integer> blackList =  new ArrayList<Integer>();
-
     // collection of the four dogs, keyed with indexes.
     private static  Map<Integer, JButton> dogs = new HashMap<>();
-
     // self-explanatory
     private static boolean isDogSelected;
-
     // Index of selected dog. If no dog is selected, it will be -1
     private static int selectedDogIndex;
-
     // Index of selected wolf
     private static int selectedWolfIndex;
-
     // For deciding weather game is started, are dogs set ?
     private static boolean isDogsSet;
-
     private static boolean isGameOver = false;
-
     private static boolean isWolfSet = false;
     private static boolean isWolfSelected = false;
-
     private boolean isGameStarted;
     static boolean isReadyToStart;
-
     // possible (yellow) moves of the selected dog or wolf
     private static ArrayList<Integer> possibleMoves = new ArrayList<>();;
-
-
     private static final String columns = "ABCDEFGH";
     private static boolean isPlayer1DogToMove = false;
     private static boolean isPlayer2WolfToMove = false;
@@ -88,7 +73,6 @@ public class Game implements ActionListener {
             {
                 public void actionPerformed(ActionEvent e) {
                     if (!isGameOver) {
-
                         highlightDogs(false);
                         for (Map.Entry<Integer, JButton> entry : dogs.entrySet()) {
                             Integer dogKey = entry.getKey();
@@ -120,43 +104,34 @@ public class Game implements ActionListener {
         ArrayList<Integer> poss = new ArrayList<>();
         int left = tableSize - 1;
         int right = tableSize + 1;
-
         int firstPossibleMove = dogIndex - right;
         if (firstPossibleMove > 0 && firstPossibleMove < 63 && blackList.contains(firstPossibleMove))
             poss.add(firstPossibleMove);
-
         int secondPossibleMove = dogIndex - left;
         if (secondPossibleMove > 0 && secondPossibleMove < 63 && blackList.contains(secondPossibleMove))
             poss.add(secondPossibleMove);
-
         return poss;
     }
 
     private ArrayList<Integer> getPossibleMovesOfIndexForWolf(Integer wolfIndex) {
         ArrayList<Integer> poss = new ArrayList<>();
-
         int firstPossibleMove = wolfIndex - 7;
         if (firstPossibleMove > 0 && firstPossibleMove < 63 && blackList.contains(firstPossibleMove) && !dogs.containsKey(firstPossibleMove))
             poss.add(firstPossibleMove);
-
         int secondPossibleMove = wolfIndex -9;
         if (secondPossibleMove > 0 && secondPossibleMove < 63 && blackList.contains(secondPossibleMove) && !dogs.containsKey(secondPossibleMove))
             poss.add(secondPossibleMove);
-
         int thirdPossibleMove = wolfIndex + 7;
         if (thirdPossibleMove > 0 && thirdPossibleMove < 63 && blackList.contains(thirdPossibleMove) && !dogs.containsKey(thirdPossibleMove))
             poss.add(thirdPossibleMove);
-
         int fourthPossibleMove = wolfIndex + 9;
         if (fourthPossibleMove > 0 && fourthPossibleMove < 63 && blackList.contains(fourthPossibleMove) && !dogs.containsKey(fourthPossibleMove))
             poss.add(fourthPossibleMove);
-
         return poss;
     }
 
     JButton getWolfButton() {
         JButton button = new JButton();
-
         try {
             Image img = ImageIO.read(new FileInputStream("./src/main/resources/wolf.jpg"));
             button.setIcon(new ImageIcon(img));
@@ -202,11 +177,9 @@ public class Game implements ActionListener {
                             highlightDogs(true);
                         }
                         // Dog move to be done
-
                         if (isReadyToStart && !isGameOver) {
                             if (possibleMoves.contains(index) && isDogSelected && isWolfSet && isPlayer1DogToMove && !isPlayer2WolfToMove) {
                                 makeADogmove(selectedDogIndex, index);
-
                                 if (!wolfCanMove()) {
                                     System.out.println("Wolf lost");
                                     isGameOver = true;
@@ -250,7 +223,6 @@ public class Game implements ActionListener {
                     }
                 }
             }});
-
         return button;
     }
 
@@ -259,7 +231,6 @@ public class Game implements ActionListener {
                 selectedWolfIndex == 58 ||
                 selectedWolfIndex == 60 ||
                 selectedWolfIndex == 62;
-
     }
 
     private void highlightDogsToRed() {
@@ -271,7 +242,6 @@ public class Game implements ActionListener {
 
     private boolean wolfCanMove() {
         possibleMoves = getPossibleMovesOfIndexForWolf(selectedWolfIndex);
-
         System.out.println("BEFORE " + possibleMoves.toString());
         for (int i = 0; i < possibleMoves.size(); i++) {
             System.out.println("actual ind " +  possibleMoves.get(i));
@@ -285,12 +255,10 @@ public class Game implements ActionListener {
     }
 
     private void makeAWolfmove(int index) {
-
         if(index == 56 || index == 58 || index == 60 || index == 62 ) {
             isGameOver = true;
             highlightDogsToRed();
         }
-
         putBackToBlack(index);
         putField(wolf, index);
         putYellowsBackToBlack(true);
@@ -318,17 +286,14 @@ public class Game implements ActionListener {
                 System.out.println("clicked WHITE");
             }
         });
-
         return button;
     }
 
     public final void Gui() {
         window.setBorder(new EmptyBorder(8, 8, 8, 8));
-
         table = new JPanel(new GridLayout(8, 8));
         table.setBorder(new LineBorder(Color.BLACK));
         window.add(table);
-
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 JButton button;
@@ -339,13 +304,11 @@ public class Game implements ActionListener {
                     int index = getIndexFromCoord(i, j);
                     blackFields.put(index, button);
                     blackList.add(index);
-
                 }
                 fields[i][j] = button;
                 table.add(button);
                 button.addActionListener(this);
             }
-
         }
         this.setDogs();
         System.out.println("GUI STOOD UP");
@@ -376,7 +339,6 @@ public class Game implements ActionListener {
         putField(dog, index);
         putYellowsBackToBlack(true);
         isPlayer2WolfToMove = true;
-
         highlightField(dog, false);
         highlightField(wolf, true);
         dogs.remove(selectedDogInd);
@@ -388,8 +350,6 @@ public class Game implements ActionListener {
         dogs.put(index, dog);
         isPlayer1DogToMove = false;
         isPlayer2WolfToMove = true;
-
-
     }
 
     private void highlightField(JButton dog, boolean set) {
@@ -400,7 +360,6 @@ public class Game implements ActionListener {
             dog.setBackground(null);
         }
     }
-
 
     private void highlightDogs(boolean b) {
         if (b) {
@@ -428,7 +387,6 @@ public class Game implements ActionListener {
             }
         }
         else {
-
         }
     }
 
@@ -467,7 +425,6 @@ public class Game implements ActionListener {
             table.remove(selectedDogIndex);
             table.add(black, selectedDogIndex);
         }
-
         table.revalidate();
         table.repaint();
     }
@@ -486,7 +443,6 @@ public class Game implements ActionListener {
         sb.append("\nisWolfSelected  = " + isWolfSelected);
         sb.append("\nselectedWolfIndex  = " + selectedWolfIndex);
         sb.append("\npossibleMoves  = " + possibleMoves);
-
         sb.append("\n END OF : " + i);
         sb.append("\n====================================");
         System.out.println(sb.toString());

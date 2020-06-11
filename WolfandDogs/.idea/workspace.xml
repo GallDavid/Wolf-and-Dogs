@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58a6c6e6-12a8-45cc-9fee-aae4b4937da6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GameContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Game$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Game$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Game$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Game$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GameContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GameContainer.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +34,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../HomeProjekt/WolfandDogs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Wolf and Dogs/wolves(1)/wolves" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -113,10 +105,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1070" y="409" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591217779197" />
-    <state x="2423" y="207" width="424" height="484" key="FileChooserDialogImpl" timestamp="1591861583708">
+    <state x="2423" y="207" width="424" height="484" key="FileChooserDialogImpl" timestamp="1591862666345">
       <screen x="1920" y="0" width="1440" height="900" />
     </state>
-    <state x="2423" y="207" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053/1920.0.1440.900@1920.0.1440.900" timestamp="1591861583708" />
+    <state x="2423" y="207" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053/1920.0.1440.900@1920.0.1440.900" timestamp="1591862666345" />
     <state width="1394" height="227" key="GridCell.Tab.0.bottom" timestamp="1591861745569">
       <screen x="1920" y="0" width="1440" height="900" />
     </state>
